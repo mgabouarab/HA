@@ -31,12 +31,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var signUpRePasswordTextField: UITextField!
     
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     
     //MARK: - ViewLoad Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForKeyboardNotifications()
+        signInButtonStatus()
+        signUpButtonStatus()
         
         // TODO:  Initial Values
         logo.alpha = 0
@@ -68,7 +71,24 @@ class ViewController: UIViewController {
     
     //MARK: - Switch Bettween sign in and sign up views
     
-    
+    @IBAction func toSignUP(_ sender: UIButton) {
+        setViewBack(view: signInView, hidden: true)
+        setViewBack(view: signUpView, hidden: false)
+        UIView.animate(withDuration: 0.5) {
+            self.signingHeight.constant = 850 // Expand the view to fit the containts
+            self.anyViewSelected()    // Dissmis the keyboard
+            self.view.layoutIfNeeded()
+        }
+    }
+    @IBAction func toSignIn(_ sender: UIButton) {
+        setView(view: signInView, hidden: false)
+        setView(view: signUpView, hidden: true)
+        UIView.animate(withDuration: 0.5) {
+            self.signingHeight.constant = 560  // Expand the view to fit the containts
+            self.anyViewSelected()      // Dissmis the keyboard
+            self.view.layoutIfNeeded()
+        }
+    }
     //TODO: animate the view to right
     func setView(view: UIView, hidden: Bool) {
         UIView.transition(with: view, duration: 0.7, options: .transitionFlipFromRight, animations: {
@@ -82,32 +102,32 @@ class ViewController: UIViewController {
         })
     }
     
-    @IBAction func toSignUP(_ sender: UIButton) {
-        setViewBack(view: signInView, hidden: true)
-        setViewBack(view: signUpView, hidden: false)
-        UIView.animate(withDuration: 0.5) {
-            self.signingHeight.constant = 850 // Expand the view to fit the containts
-            self.anyViewSelected()    // Dissmis the keyboard
-            self.view.layoutIfNeeded()
-        }
+    //MARK: - segues
+    @IBAction func signInButtonPressed(_ sender: UIButton) {
+        resetAllTextFields()
+        performSegue(withIdentifier: "ToRegisterScreen", sender: signInButton)
+    }
+    @IBAction func signUpButtonPressed(_ sender: UIButton) {
+        resetAllTextFields()
+        performSegue(withIdentifier: "ToRegisterScreen", sender: signUpButton)
     }
     
-    @IBAction func toSignIn(_ sender: UIButton) {
-        setView(view: signInView, hidden: false)
-        setView(view: signUpView, hidden: true)
-        UIView.animate(withDuration: 0.5) {
-            self.signingHeight.constant = 560  // Expand the view to fit the containts
-            self.anyViewSelected()      // Dissmis the keyboard
-            self.view.layoutIfNeeded()
-        }
-    }
     
-    @IBAction func signInButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "ToMainPage", sender: signInButton)
+    func resetAllTextFields() {
+        signInPhoneNumberTextField.text = nil
+        signInPasswordTextField.text = nil
+        signUpFirstNameTextField.text = nil
+        signUpLastNameTextField.text = nil
+        signUpEmailTextField.text = nil
+        signUpPhoneNumberTextField.text = nil
+        signUpPasswordTextField.text = nil
+        signUpRePasswordTextField.text = nil
+        signInButtonStatus()
+        signUpButtonStatus()
+        
     }
     
     //MARK: - Fix the keyboard cover views & Dissmis the keyboard Issues
-    
     
     //TODO: Get notification for keyboard shown and hidden
     func registerForKeyboardNotifications() {
@@ -143,6 +163,55 @@ class ViewController: UIViewController {
         signUpPhoneNumberTextField.endEditing(true)
         signUpPasswordTextField.endEditing(true)
         signUpRePasswordTextField.endEditing(true)
+    }
+    
+    //MARK: - Disable Buttons to fill TextFields
+    
+    //TODO: - Disable sign in Button
+    @IBAction func signInPhoneNumber(_ sender: UITextField) {
+        signInButtonStatus()
+    }
+    @IBAction func signInPassword(_ sender: UITextField) {
+        signInButtonStatus()
+    }
+    func signInButtonStatus() {
+        if (signInPasswordTextField.text?.count)! >= 6 && (signInPhoneNumberTextField.text?.count)! == 11 {
+            signInButton.isEnabled = true
+            signInButton.backgroundColor = #colorLiteral(red: 0.8, green: 0.2078431373, blue: 0.1803921569, alpha: 1)
+        }
+        else {
+            signInButton.isEnabled = false
+            signInButton.backgroundColor = #colorLiteral(red: 0.8, green: 0.2078431373, blue: 0.1803921569, alpha: 0.5)
+        }
+    }
+    //TODO: - Disable sign up Button
+    @IBAction func signUpFirstName(_ sender: UITextField) {
+        signUpButtonStatus()
+    }
+    @IBAction func signUpLastName(_ sender: UITextField) {
+        signUpButtonStatus()
+    }
+    @IBAction func signUpEmail(_ sender: UITextField) {
+        signUpButtonStatus()
+    }
+    @IBAction func signUpPhoneNumber(_ sender: UITextField) {
+        signUpButtonStatus()
+    }
+    @IBAction func signUpPassword(_ sender: UITextField) {
+        signUpButtonStatus()
+    }
+    @IBAction func signUpRePassword(_ sender: UITextField) {
+        signUpButtonStatus()
+    }
+    func signUpButtonStatus() {
+        if signUpFirstNameTextField.text?.isEmpty == false && signUpLastNameTextField.text?.isEmpty == false && (signUpEmailTextField.text?.contains("@"))! && (signUpEmailTextField.text?.contains(".com"))! && signUpPhoneNumberTextField.text?.count == 11 && (signUpPasswordTextField.text?.count)! > 5  && signUpRePasswordTextField.text == signUpPasswordTextField.text {
+            signUpButton.isEnabled = true
+            signUpButton.backgroundColor = #colorLiteral(red: 0.8, green: 0.2078431373, blue: 0.1803921569, alpha: 1)
+        }
+        else {
+            signUpButton.isEnabled = false
+            signUpButton.backgroundColor = #colorLiteral(red: 0.8, green: 0.2078431373, blue: 0.1803921569, alpha: 0.5)
+        }
     }
     
 

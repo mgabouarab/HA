@@ -19,21 +19,17 @@ class ContactUsViewController: UIViewController {
     @IBAction func firstNumberForCalling(_ sender: UIButton) {
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(URL(string: "telprompt://\(+2010900733)")!)
-            print("1")
         } else {
             // Fallback on earlier versions
             UIApplication.shared.openURL(URL(string: "telprompt://\(+2010900733)")!)
-            print("2")
         }
     }
     @IBAction func secondNumberForCalling(_ sender: UIButton) {
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(URL(string: "telprompt://\(+2010900733)")!)
-            print("3")
         } else {
             // Fallback on earlier versions
             UIApplication.shared.openURL(URL(string: "telprompt://\(+2010900733)")!)
-            print("4")
         }
     }
     

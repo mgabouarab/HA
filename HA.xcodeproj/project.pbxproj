@@ -14,9 +14,7 @@
 		2C843F272258E5D500B3D9CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C843F262258E5D500B3D9CB /* ViewController.swift */; };
 		2C843F2A2258E5D500B3D9CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C843F282258E5D500B3D9CB /* Main.storyboard */; };
 		2C843F2F2258E5D800B3D9CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C843F2D2258E5D800B3D9CB /* LaunchScreen.storyboard */; };
-		2CA7C72D225C820F005157C8 /* DaysNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C72C225C820F005157C8 /* DaysNumberCollectionViewCell.swift */; };
 		2CCC9D2A225AFCC40087FBEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CCC9D29225AFCC40087FBEA /* Assets.xcassets */; };
-		2CCC9D2C225B37BE0087FBEA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC9D2B225B37BE0087FBEA /* MainViewController.swift */; };
 		2CCEE54622631C13005BF126 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEE54522631C13005BF126 /* RegisterViewController.swift */; };
 		2CD39F9822656EE2006C852B /* UpdatingProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD39F9722656EE2006C852B /* UpdatingProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -31,9 +29,7 @@
 		2C843F292258E5D500B3D9CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C843F2E2258E5D800B3D9CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C843F302258E5D800B3D9CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2CA7C72C225C820F005157C8 /* DaysNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysNumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		2CCC9D29225AFCC40087FBEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2CCC9D2B225B37BE0087FBEA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = HA/Controllers/MainViewController.swift; sourceTree = SOURCE_ROOT; };
 		2CCEE54522631C13005BF126 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		2CD39F9722656EE2006C852B /* UpdatingProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatingProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +83,6 @@
 		2C843F372258E60E00B3D9CB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2CA7C72C225C820F005157C8 /* DaysNumberCollectionViewCell.swift */,
 				2C843F282258E5D500B3D9CB /* Main.storyboard */,
 				2C843F2D2258E5D800B3D9CB /* LaunchScreen.storyboard */,
 			);
@@ -99,7 +94,6 @@
 			children = (
 				2C843F242258E5D500B3D9CB /* AppDelegate.swift */,
 				2C843F262258E5D500B3D9CB /* ViewController.swift */,
-				2CCC9D2B225B37BE0087FBEA /* MainViewController.swift */,
 				2CCEE54522631C13005BF126 /* RegisterViewController.swift */,
 				2C255DE322646FF6008C9124 /* DayesOfCalender.swift */,
 				2CD39F9722656EE2006C852B /* UpdatingProfileViewController.swift */,
@@ -180,9 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CA7C72D225C820F005157C8 /* DaysNumberCollectionViewCell.swift in Sources */,
 				2C255DE422646FF6008C9124 /* DayesOfCalender.swift in Sources */,
-				2CCC9D2C225B37BE0087FBEA /* MainViewController.swift in Sources */,
 				2CCEE54622631C13005BF126 /* RegisterViewController.swift in Sources */,
 				2C101D24225EDD7400F7D748 /* GalaryViewController.swift in Sources */,
 				2CD39F9822656EE2006C852B /* UpdatingProfileViewController.swift in Sources */,
