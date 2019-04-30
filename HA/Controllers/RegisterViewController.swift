@@ -130,7 +130,7 @@ class RegisterViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         if indexPath.item >= firstDayIndex && indexPath.item < (firstDayIndex + numberOfDaysOfMonth!) {
             cell.numberOfDay.isHidden = false
-            cell.numberOfDay.setTitle(String(indexPath.item - 1), for: .normal)
+            cell.numberOfDay.setTitle(String(indexPath.item - firstDayIndex + 1), for: .normal)
             if indexPath.item == currentDayNumber! + firstDayIndex - 1 {
                 // Current Day
                 cell.numberOfDay.setBackgroundImage(UIImage(named: "CurrentDay"), for: .normal)
@@ -209,15 +209,21 @@ class RegisterViewController: UIViewController, UICollectionViewDelegate, UIColl
         for dayIndex in 0 ... daysArray.count - 1 {
             if daysArray[dayIndex] == currentDayName {
                 currentDayIndex = dayIndex
-                for _ in 0 ... numberOfRepetingOperation {
-                    if currentDayIndex == 0 {
-                        currentDayIndex = 6
-                        result = currentDayIndex
+                if numberOfRepetingOperation >= 0 {
+                    for _ in 0 ... numberOfRepetingOperation {
+                        if currentDayIndex == 0 {
+                            currentDayIndex = 6
+                            result = currentDayIndex
+                        }
+                        else {
+                            currentDayIndex -= 1
+                            result = currentDayIndex
+                        }
                     }
-                    else {
-                        currentDayIndex -= 1
-                        result = currentDayIndex
-                    }
+                }
+                else {
+                    currentDayIndex = dayIndex
+                    result = currentDayIndex
                 }
             }
             firstDayName = daysArray[result]

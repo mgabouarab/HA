@@ -91,13 +91,13 @@ class ViewController: UIViewController {
     }
     //TODO: animate the view to right
     func setView(view: UIView, hidden: Bool) {
-        UIView.transition(with: view, duration: 0.7, options: .transitionFlipFromRight, animations: {
+        UIView.transition(with: view, duration: 0.5, options: .transitionFlipFromRight, animations: {
             view.isHidden = hidden
         })
     }
     //TODO: animate the view to Left
     func setViewBack(view: UIView, hidden: Bool) {
-        UIView.transition(with: view, duration: 0.7, options: .transitionFlipFromLeft, animations: {
+        UIView.transition(with: view, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             view.isHidden = hidden
         })
     }
