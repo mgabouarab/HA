@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ViewController: UIViewController {
     
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var signInView: UIView!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var signingHeight: NSLayoutConstraint!
-    @IBOutlet weak var signInPhoneNumberTextField: UITextField!
+    @IBOutlet weak var signInEmailTextField: UITextField!
     @IBOutlet weak var signInPasswordTextField: UITextField!
     @IBOutlet weak var signUpFirstNameTextField: UITextField!
     @IBOutlet weak var signUpLastNameTextField: UITextField!
@@ -108,13 +109,19 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "ToRegisterScreen", sender: signInButton)
     }
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
-        resetAllTextFields()
-        performSegue(withIdentifier: "ToRegisterScreen", sender: signUpButton)
+        if signUpRePasswordTextField.text == signUpPasswordTextField.text {
+            resetAllTextFields()
+            performSegue(withIdentifier: "ToRegisterScreen", sender: signUpButton)
+        }
+        else{
+            SVProgressHUD.showError(withStatus: "Password is not match")
+        }
+        
     }
     
     
     func resetAllTextFields() {
-        signInPhoneNumberTextField.text = nil
+        signInEmailTextField.text = nil
         signInPasswordTextField.text = nil
         signUpFirstNameTextField.text = nil
         signUpLastNameTextField.text = nil
@@ -155,7 +162,7 @@ class ViewController: UIViewController {
     }
     //TODO: Dissmis the keyboard for all textFields
     @objc func anyViewSelected() {
-        signInPhoneNumberTextField.endEditing(true)
+        signInEmailTextField.endEditing(true)
         signInPasswordTextField.endEditing(true)
         signUpFirstNameTextField.endEditing(true)
         signUpLastNameTextField.endEditing(true)
@@ -168,14 +175,14 @@ class ViewController: UIViewController {
     //MARK: - Disable Buttons to fill TextFields
     
     //TODO: - Disable sign in Button
-    @IBAction func signInPhoneNumber(_ sender: UITextField) {
+    @IBAction func signInEmail(_ sender: UITextField) {
         signInButtonStatus()
     }
     @IBAction func signInPassword(_ sender: UITextField) {
         signInButtonStatus()
     }
     func signInButtonStatus() {
-        if (signInPasswordTextField.text?.count)! >= 6 && (signInPhoneNumberTextField.text?.count)! == 11 {
+        if (signInPasswordTextField.text?.count)! >= 6 && (signInEmailTextField.text?.contains("@"))! && (signInEmailTextField.text?.contains(".com"))! {
             signInButton.isEnabled = true
             signInButton.backgroundColor = #colorLiteral(red: 0.8, green: 0.2078431373, blue: 0.1803921569, alpha: 1)
         }
@@ -204,7 +211,7 @@ class ViewController: UIViewController {
         signUpButtonStatus()
     }
     func signUpButtonStatus() {
-        if signUpFirstNameTextField.text?.isEmpty == false && signUpLastNameTextField.text?.isEmpty == false && (signUpEmailTextField.text?.contains("@"))! && (signUpEmailTextField.text?.contains(".com"))! && signUpPhoneNumberTextField.text?.count == 11 && (signUpPasswordTextField.text?.count)! > 5  && signUpRePasswordTextField.text == signUpPasswordTextField.text {
+        if signUpFirstNameTextField.text?.isEmpty == false && signUpLastNameTextField.text?.isEmpty == false && (signUpEmailTextField.text?.contains("@"))! && (signUpEmailTextField.text?.contains(".com"))! && signUpPhoneNumberTextField.text?.count == 11 && (signUpPasswordTextField.text?.count)! > 5  && signUpRePasswordTextField.text?.count == signUpPasswordTextField.text?.count {
             signUpButton.isEnabled = true
             signUpButton.backgroundColor = #colorLiteral(red: 0.8, green: 0.2078431373, blue: 0.1803921569, alpha: 1)
         }
